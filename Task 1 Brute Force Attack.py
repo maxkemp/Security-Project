@@ -11,7 +11,6 @@ def brute_force_attack(hashed_passwords):
         if counter < noOfPasswords:
             for pwd in itertools.product(passwordCharacters, repeat=length):
                 pwd_str = "".join(pwd)
-                print(pwd_str)
                 hashed_pwd = hashlib.sha512(pwd_str.encode()).hexdigest()
                 if hashed_pwd in hashed_passwords:
                     crackedPasswords.append(pwd_str)
