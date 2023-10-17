@@ -10,4 +10,7 @@ def dictionaryAttack(inputPasswords):
         if digest in hashedPasswords:
             crackedPasswords.append(password)
 dictionaryAttack(hashedPasswords)
-print("The passwords are: ", crackedPasswords)
+if len(crackedPasswords) == 0:
+    print("No passwords found")
+else:
+    print("The passwords are: ", crackedPasswords)

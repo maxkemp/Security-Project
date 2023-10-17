@@ -30,6 +30,6 @@ noOfPasswords = len(hashed_passwords)
 brute_force_attack(hashed_passwords)
 
 if len(crackedPasswords) != 0: 
-    print("Passwords found: ", crackedPasswords)
+    print("The passwords are: ", crackedPasswords)
 else:
     print("No passwords found")
