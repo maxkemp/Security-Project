@@ -11,7 +11,6 @@ def dictionaryAttack(inputPasswords):
     for saltedPassword in saltedPasswordDictionary:
         saltedEncodedPassword = saltedPassword.encode('utf-8')
         digest = hashlib.sha512(saltedEncodedPassword.strip()).hexdigest()
-        print(digest)
         for pair in hashedPasswordsAndSalts:
             if digest == pair[0]:
                 crackedPasswords.append(saltedPassword[:-8])
