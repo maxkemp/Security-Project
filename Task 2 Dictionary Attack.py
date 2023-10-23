@@ -4,7 +4,7 @@ hashedPasswords =['31a3423d8f8d93b92baffd753608697ebb695e4fca4610ad7e08d3d0eb7f6
 crackedPasswords = []
 
 def dictionaryAttack(inputPasswords):
-    for password in passwordDictionary.split('\n'):
+    for password in passwordDictionary.split('\n'): #split dictionary into lines, and thus passwords
         encodedPassword = password.encode('utf-8')
         digest = hashlib.sha512(encodedPassword.strip()).hexdigest()
         if digest in hashedPasswords:

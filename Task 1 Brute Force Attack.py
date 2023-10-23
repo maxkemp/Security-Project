@@ -8,17 +8,17 @@ def brute_force_attack(hashed_passwords):
     passwordCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9']
     length = 1
     while True:
-        if counter < noOfPasswords:
-            for pwd in itertools.product(passwordCharacters, repeat=length):
-                pwd_str = "".join(pwd)
-                hashed_pwd = hashlib.sha512(pwd_str.encode()).hexdigest()
-                if hashed_pwd in hashed_passwords:
+        if counter < noOfPasswords: #making sure that we haven't found all the passwords
+            for pwd in itertools.product(passwordCharacters, repeat=length): #generate all strings
+                pwd_str = "".join(pwd) #convert tuple to string
+                hashed_pwd = hashlib.sha512(pwd_str.encode()).hexdigest() #hash string
+                if hashed_pwd in hashed_passwords: #compare with hashed passwords inputted
                     crackedPasswords.append(pwd_str)
-                    counter += 1
+                    counter += 1  #increase counter 
                     break
             if not hashed_passwords:
                 return
-            length += 1
+            length += 1 #increase length of string
         else:
             return
 

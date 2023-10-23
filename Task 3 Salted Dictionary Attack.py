@@ -4,16 +4,17 @@ hashedPasswordsAndSalts = [('63328352350c9bd9611497d97fef965bda1d94ca15cc47d5053
 saltedPasswordDictionary = []
 crackedPasswords = []
 
+#this is mostly the same as task 2
 def dictionaryAttack(inputPasswords):
     for password in passwordDictionary.split('\n'):
         for pair in hashedPasswordsAndSalts:
-            saltedPasswordDictionary.append(password + str(pair[1]))
+            saltedPasswordDictionary.append(password + str(pair[1])) #add salt to end of password
     for saltedPassword in saltedPasswordDictionary:
         saltedEncodedPassword = saltedPassword.encode('utf-8')
         digest = hashlib.sha512(saltedEncodedPassword.strip()).hexdigest()
         for pair in hashedPasswordsAndSalts:
-            if digest == pair[0]:
-                crackedPasswords.append(saltedPassword[:-8])
+            if digest == pair[0]: #compare with hashed passwords, from the list of tuples inputted
+                crackedPasswords.append(saltedPassword[:-8]) #remove salt from end of password and add to dictionary
 
 dictionaryAttack(hashedPasswordsAndSalts)
 if len(crackedPasswords) == 0:
